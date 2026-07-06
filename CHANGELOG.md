@@ -20,7 +20,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ### Changed
 - **Playback no longer highlights notes.** The moving highlight could drift out
-  of sync with the sound, so it has been removed; playback is now audio only.
+  of sync with the sound, so it has been removed; playback is now audio only. We
+  plan to add this back later.
 
 ### Fixed
 - **Playback audio delay.** Tunes now play from memory instead of a temporary
