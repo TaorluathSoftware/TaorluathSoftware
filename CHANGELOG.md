@@ -1,4 +1,4 @@
-[CHANGELOG.md](https://github.com/user-attachments/files/29719923/CHANGELOG.md)
+[CHANGELOG.md](https://github.com/user-attachments/files/29765107/CHANGELOG.md)
 # Changelog
 
 All notable changes to **Taorluath** are documented here. This project is in
@@ -6,6 +6,28 @@ All notable changes to **Taorluath** are documented here. This project is in
 **MAJOR** = full revamp, **MINOR** = new features, **PATCH** = fixes & tweaks.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
+
+## [0.2.4] — 2026-07-07 — Pre-Alpha
+
+### Added
+- **Delete saved scores from the dashboard** — select one and press Delete or
+  Backspace (with a confirmation prompt).
+- **Ultra (1200 DPI)** option in the Print dialog.
+- New settings **Default quality (DPI)** and **Default margin (cm)** that
+  pre-fill the Print dialog.
+
+### Changed
+- **Dotting a note now deselects it**, like every other edit.
+- **Selecting a note hides the placement ghost**, and the ghost now **snaps** to
+  where the note will actually land when placed.
+- **Leaving the Notes / Embellishments tab deselects** the current note.
+- Bars now start **right after the clef** on staves that show no time signature,
+  instead of leaving an empty gap.
+- **Bar lines are thicker and darker** so they no longer disappear when printed.
+- Dotted notes now push the surrounding notes apart, keeping spacing even.
+
+### Fixed
+- The **App font size** setting now actually resizes the interface.
 
 ## [0.2.3] — 2026-07-06 — Pre-Alpha
 
@@ -20,8 +42,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ### Changed
 - **Playback no longer highlights notes.** The moving highlight could drift out
-  of sync with the sound, so it has been removed; playback is now audio only. We
-  plan to add this back later.
+  of sync with the sound, so it has been removed; playback is now audio only.
 
 ### Fixed
 - **Playback audio delay.** Tunes now play from memory instead of a temporary
@@ -60,6 +81,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - **Light and dark themes**, configurable app font and accent colour.
 - **Licensing** — Firebase-verified activation keys.
 
+[0.2.4]: https://github.com/TaorluathSoftware/TaorluathSoftware/releases/tag/Pre-Alpha_v0.2.4
 [0.2.3]: https://github.com/TaorluathSoftware/TaorluathSoftware/releases/tag/Pre-Alpha_v0.2.3
 [0.2.2]: https://github.com/TaorluathSoftware/TaorluathSoftware/releases/tag/Pre-Alpha_v0.2.2
 [0.2.1]: https://github.com/TaorluathSoftware/TaorluathSoftware/releases/tag/Pre-Alpha_v0.2.1
