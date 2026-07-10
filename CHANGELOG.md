@@ -1,4 +1,4 @@
-[CHANGELOG.md](https://github.com/user-attachments/files/29866882/CHANGELOG.md)
+[CHANGELOG.md](https://github.com/user-attachments/files/29909343/CHANGELOG.md)
 # Changelog
 
 All notable changes to **Taorluath** are documented here. This project is in
@@ -7,9 +7,51 @@ All notable changes to **Taorluath** are documented here. This project is in
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [0.2.5] — 2026-07-09 — Pre-Alpha
+## [0.2.5] — 2026-07-10 — Pre-Alpha
+
+### Added
+- **Text tab.** Add free text anywhere on the page — click **Add Text Box**, then
+  click where you want it. Click an existing box to edit it (clear the text to
+  delete it).
+- **Stylable page number and text boxes.** Set the font, size and weight
+  (bold/italic) of the page number (Settings → **Page Number**, or double-click
+  it) and of each custom text box.
+- **Stylable 2nd-time numbers.** Double-click a 1st/2nd-time number to set its
+  font, size and weight, and choose whether the bracket sits **above or below**
+  the stave.
+- **Duplicate a saved score** — select it on the dashboard and press **D** to
+  make a copy titled "Copy of <name>".
+- **Print Preview** — File → **Print Preview** (or `Ctrl+Shift+P`) shows the
+  composed page as it will be printed, with a **Print…** button to go straight to
+  the print dialog.
+- **Harmonies tab.** **Add Harmony Part** appends a harmony part as its own
+  stave under the tune (labelled "Harmony", matching the melody's bars and time
+  signature); write its notes with the Notes tab, and **Delete Harmony Part**
+  removes it. Harmony staves are for reading/printing and are not included in
+  playback.
+- **Tune tab — multiple tunes per document.** **Add Tune** appends a blank,
+  untitled 4-stave tune to the end (also available on the **Stave** tab) and
+  **Delete Selected Tune** removes the selected tune and its staves. Click a
+  stave to select its tune; double-click a tune's title to rename it. Every
+  tune's header sits **1 cm from the top** of its section with a fixed **100 px**
+  gap down to its first stave; the **tune type sits on the left** with the title
+  centred and composer on the right; and each later tune **prints its own time
+  signature** (even if it matches the tune above).
 
 ### Changed
+- **Dashboard scores are sorted alphabetically** by tune name, ignoring leading
+  articles (The/A/An/And) and any numbers (so "The 2nd Battalion" files under B).
+- **Smaller embellishment heads.** Gracenote/embellishment noteheads are now 25%
+  smaller.
+- **Page number only when it's needed.** The page number is shown only when the
+  tunes span **more than one page**; single-page tunes have no number.
+- **Automatic updates.** Choosing **Yes** on the update prompt now downloads and
+  installs the new version and reopens the app for you — no more manual download.
+- **Font sizes are now set in points** (not pixels), so text prints at a true
+  typographic size. Existing tunes are converted automatically.
+- **Lighter placement ghost.** The hover preview now **snaps** to where the note
+  or embellishment will land instead of pushing the other notes apart on every
+  move — this removes the constant page redraw and its heavy memory use.
 - **Sharper editor rendering.** The score now renders at full resolution on
   screen — crisp noteheads, gracenotes and beams — while keeping the thin, clean
   staff lines.
@@ -19,6 +61,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - The app and installer are now **digitally signed**.
 
 ### Fixed
+- **Embellishment heads recalibrated to their stems.** After the heads were made
+  smaller, the stem read as detached from the head at screen zoom; the stem now
+  sits at the head's right edge while overlapping its solid body, so it stays
+  connected at any zoom.
+- **Tie Height now actually changes the tie arc.** A width-based cap was
+  overriding the setting for all but very wide ties, so it looked like it did
+  nothing; the setting now drives the height (clamped only so a tie never
+  balloons taller than its own width).
+- **"Play from Selected Bar" now honours repeat barlines** — it previously
+  ignored them and played straight through; it now expands repeats just like
+  "Play Entire Score".
+- **Page number no longer clipped when printing** — moved up from the very
+  bottom edge so print margins don't cut it off.
+- **Everything now prints in pure black.** Notes, staff lines, beams, clefs, time
+  signatures, ties and all text were a very dark grey; they are now true black,
+  which also makes prints look much sharper.
+- **Print quality now genuinely scales with the DPI setting.** The higher-DPI
+  page was being discarded during the final resize onto the printer (the printer
+  device context defaulted to nearest-neighbour scaling); the page is now drawn
+  with high-quality (HALFTONE) interpolation, so 1200 DPI is visibly sharper than
+  150. (The v0.2.4 note claimed this was fixed, but the resize step still threw
+  the extra resolution away — this is the real fix.)
+- **Corrected the F and B doublings:** F is now `High A, F, High G` and B is now
+  `High G, B, C`.
+- **Corrected the Leamluath (grip)** to `Low G, D, Low G`.
 - The app now **reports its own version correctly**, so the update check no
   longer offers an update on every launch (the version file wasn't being bundled
   into the build).
