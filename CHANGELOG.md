@@ -1,4 +1,4 @@
-[CHANGELOG.md](https://github.com/user-attachments/files/29909343/CHANGELOG.md)
+[CHANGELOG.md](https://github.com/user-attachments/files/30135047/CHANGELOG.md)
 # Changelog
 
 All notable changes to **Taorluath** are documented here. This project is in
@@ -10,6 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 ## [0.2.5] — 2026-07-10 — Pre-Alpha
 
 ### Added
+- **Two new embellishments** on the Embellishments tab: **Gracenote Strike**
+  (`High G, D, C`) and **Heavy Gracenote-Strike** (`High G, Low G, C`).
 - **Text tab.** Add free text anywhere on the page — click **Add Text Box**, then
   click where you want it. Click an existing box to edit it (clear the text to
   delete it).
@@ -39,6 +41,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   signature** (even if it matches the tune above).
 
 ### Changed
+- **Note & embellishment buttons show a picture, not a name.** The Notes and
+  Embellishments tabs now render each note/embellishment on a small bare five-line
+  stave instead of a text label. Embellishments are drawn on their own (no melody
+  note), referenced to G.
+- **Redrawn gracenotes.** A cleaner single-gracenote glyph (new
+  `Assets/notes/gracenote.png`), and the barred embellishment heads are now
+  **angled noteheads** that match the melody notes, instead of flat ovals.
 - **Dashboard scores are sorted alphabetically** by tune name, ignoring leading
   articles (The/A/An/And) and any numbers (so "The 2nd Battalion" files under B).
 - **Smaller embellishment heads.** Gracenote/embellishment noteheads are now 25%
@@ -61,10 +70,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - The app and installer are now **digitally signed**.
 
 ### Fixed
-- **Embellishment heads recalibrated to their stems.** After the heads were made
-  smaller, the stem read as detached from the head at screen zoom; the stem now
-  sits at the head's right edge while overlapping its solid body, so it stays
-  connected at any zoom.
+- **Lone gracenotes are bigger** so they print clearly — they were nearly
+  invisible on paper. Barred embellishment heads are unchanged.
+- **Embellishment / doubling heads fixed.** The barred gracenote heads were
+  rendering as tiny dashes at the reduced size; they now draw as clean filled
+  noteheads, sized correctly and sitting at each pitch, with the stem at the
+  head's right edge (connected at any zoom).
 - **Tie Height now actually changes the tie arc.** A width-based cap was
   overriding the setting for all but very wide ties, so it looked like it did
   nothing; the setting now drives the height (clamped only so a tie never
@@ -83,8 +94,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   with high-quality (HALFTONE) interpolation, so 1200 DPI is visibly sharper than
   150. (The v0.2.4 note claimed this was fixed, but the resize step still threw
   the extra resolution away — this is the real fix.)
-- **Corrected the F and B doublings:** F is now `High A, F, High G` and B is now
-  `High G, B, C`.
+- **Corrected the D, F and B doublings:** D is now `High G, D, E`, F is now
+  `High G, F, High G` and B is now `High G, B, C`.
 - **Corrected the Leamluath (grip)** to `Low G, D, Low G`.
 - The app now **reports its own version correctly**, so the update check no
   longer offers an update on every launch (the version file wasn't being bundled
