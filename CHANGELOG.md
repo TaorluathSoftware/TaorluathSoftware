@@ -8,6 +8,7 @@ All notable changes to **Taorluath** are documented here. This project is in
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 ## [0.2.5] — 2026-07-10 — Pre-Alpha
+*Last updated 2026-07-17.*
 
 ### Added
 - **Five new embellishments** on the Embellishments tab: **Gracenote Strike**
