@@ -1,4 +1,4 @@
-[CHANGELOG.md](https://github.com/user-attachments/files/30135047/CHANGELOG.md)
+[CHANGELOG.md](https://github.com/user-attachments/files/30135150/CHANGELOG.md)
 # Changelog
 
 All notable changes to **Taorluath** are documented here. This project is in
@@ -10,8 +10,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 ## [0.2.5] — 2026-07-10 — Pre-Alpha
 
 ### Added
-- **Two new embellishments** on the Embellishments tab: **Gracenote Strike**
-  (`High G, D, C`) and **Heavy Gracenote-Strike** (`High G, Low G, C`).
+- **Five new embellishments** on the Embellishments tab: **Gracenote Strike**
+  (`High G, D, C`), **Heavy Gracenote-Strike** (`High G, Low G, C`),
+  **High G-D Strike** (`High G, D, Low G`), **Dre** (`E, Low A, F, Low A`) and
+  **Hornpipe Shake** (`High G, D, E, D, B`).
+- **Melody-aware ornaments.** A **Taorluath** played after a **D** sounds
+  `Low G, B, Low G, E`, and after a **Low G** it sounds `D, Low A, E`. A
+  **doubling** or **G birl** played after a **High G** shifts its leading High G
+  gracenote up to **High A**, and after a **High A** drops it entirely (**High G**
+  and **High A** doublings are left unchanged).
 - **Text tab.** Add free text anywhere on the page — click **Add Text Box**, then
   click where you want it. Click an existing box to edit it (clear the text to
   delete it).
@@ -45,6 +52,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   Embellishments tabs now render each note/embellishment on a small bare five-line
   stave instead of a text label. Embellishments are drawn on their own (no melody
   note), referenced to G.
+- **Smaller note & embellishment buttons.** The picture buttons on the Notes and
+  Embellishments tabs are smaller, so more fit without crowding the ribbon.
+- **Sharps removed.** The `F♯`/`C♯` key signature is no longer drawn — those
+  sharps are implied by the highland scale and were not otherwise used.
 - **Redrawn gracenotes.** A cleaner single-gracenote glyph (new
   `Assets/notes/gracenote.png`), and the barred embellishment heads are now
   **angled noteheads** that match the melody notes, instead of flat ovals.
@@ -70,8 +81,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - The app and installer are now **digitally signed**.
 
 ### Fixed
-- **Lone gracenotes are bigger** so they print clearly — they were nearly
-  invisible on paper. Barred embellishment heads are unchanged.
+- **Lone gracenotes are sized correctly** — big enough to read clearly on paper
+  (they were nearly invisible before) but not so large they compete with the
+  melody notes; about three-quarters the height of a full note. Barred
+  embellishment heads are unchanged.
 - **Embellishment / doubling heads fixed.** The barred gracenote heads were
   rendering as tiny dashes at the reduced size; they now draw as clean filled
   noteheads, sized correctly and sitting at each pitch, with the stem at the
@@ -97,6 +110,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 - **Corrected the D, F and B doublings:** D is now `High G, D, E`, F is now
   `High G, F, High G` and B is now `High G, B, C`.
 - **Corrected the Leamluath (grip)** to `Low G, D, Low G`.
+- **Corrected the Taorluath and Crunluath.** Taorluath is now
+  `Low G, D, Low G, E` and Crunluath is now
+  `Low G, D, Low G, E, Low A, F, Low A`.
 - The app now **reports its own version correctly**, so the update check no
   longer offers an update on every launch (the version file wasn't being bundled
   into the build).
