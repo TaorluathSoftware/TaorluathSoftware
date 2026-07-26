@@ -6,7 +6,7 @@ All notable changes to **Taorluath** are documented here. This project is in
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [0.2.6] — 2026-07-26 — Pre-Alpha — Current
+## [0.2.6](https://github.com/TaorluathSoftware/TaorluathSoftware/releases/tag/Pre-Alpha_v0.2.5) — 2026-07-26 — Pre-Alpha — Current
 
 ### Added
 - **Tune selector on the Stave tab.** A new **Tune** dropdown chooses which tune
