@@ -1,3 +1,4 @@
+[CHANGELOG.md](https://github.com/user-attachments/files/32077502/CHANGELOG.md)
 # Changelog
 
 All notable changes to **Taorluath** are documented here. This project is in
@@ -6,7 +7,22 @@ All notable changes to **Taorluath** are documented here. This project is in
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
-## [0.2.6](https://github.com/TaorluathSoftware/TaorluathSoftware/releases/tag/Pre-Alpha_v0.2.6) — 2026-07-26 — Pre-Alpha — Current
+## [0.2.7] — 2026-09-10 — Pre-Alpha
+
+### Added
+- **Background drones in playback.** A steady drone now loops seamlessly under
+  the melody whenever you press Play (bagpipe mode only). Drop a `drones.wav`
+  into `Assets/audio/` (or beside the app) and it plays through the same
+  low-latency `waveOut` engine, stopping instantly on Stop.
+
+### Fixed
+- **Heavy D Throw.** Placing a Heavy D Throw was producing a *light* throw
+  (`Low G, D, C`) — the extra Low G grace note was missing, so it sounded
+  identical to the D Throw. It now correctly plays `Low G, D, Low G, C`,
+  matching its on-screen preview (and drops the leading grace to `D, Low G, C`
+  when coming from a Low G).
+
+## [0.2.6] — 2026-07-26 — Pre-Alpha
 
 ### Added
 - **Tune selector on the Stave tab.** A new **Tune** dropdown chooses which tune
