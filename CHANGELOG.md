@@ -1,4 +1,4 @@
-[CHANGELOG.md](https://github.com/user-attachments/files/30135150/CHANGELOG.md)
+[CHANGELOG.md](https://github.com/user-attachments/files/32077492/CHANGELOG.md)
 # Changelog
 
 All notable changes to **Taorluath** are documented here. This project is in
@@ -7,8 +7,38 @@ All notable changes to **Taorluath** are documented here. This project is in
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.2.7] — 2026-09-10 — Pre-Alpha
+
+### Added
+- **Background drones in playback.** A steady drone now loops seamlessly under
+  the melody whenever you press Play (bagpipe mode only). Drop a `drones.wav`
+  into `Assets/audio/` (or beside the app) and it plays through the same
+  low-latency `waveOut` engine, stopping instantly on Stop.
+
+### Fixed
+- **Heavy D Throw.** Placing a Heavy D Throw was producing a *light* throw
+  (`Low G, D, C`) — the extra Low G grace note was missing, so it sounded
+  identical to the D Throw. It now correctly plays `Low G, D, Low G, C`,
+  matching its on-screen preview (and drops the leading grace to `D, Low G, C`
+  when coming from a Low G).
+
+## [0.2.6] — 2026-07-26 — Pre-Alpha
+
+### Added
+- **Tune selector on the Stave tab.** A new **Tune** dropdown chooses which tune
+  you're editing, and the **Stave** dropdown then numbers that tune's staves from
+  **1** (instead of one continuous run across the whole document). Add Stave
+  Before/After, Delete Stave and the stave time signature all apply within the
+  selected tune.
+
+### Fixed
+- **Removing a stave no longer disturbs the other tunes.** Deleting (or
+  inserting) a stave now keeps every tune's header attached to its own staves.
+  Previously the tune boundary markers didn't move with the staves, so deleting a
+  stave in one tune could pull the top stave of the tune below it up into the
+  wrong tune.
+
 ## [0.2.5] — 2026-07-10 — Pre-Alpha
-*Last updated 2026-07-17.*
 
 ### Added
 - **Five new embellishments** on the Embellishments tab: **Gracenote Strike**
