@@ -1,4 +1,4 @@
-[CHANGELOG.md](https://github.com/user-attachments/files/32077492/CHANGELOG.md)
+[Uploading CHANGELOG.md…]()
 # Changelog
 
 All notable changes to **Taorluath** are documented here. This project is in
