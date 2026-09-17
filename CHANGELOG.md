@@ -1,4 +1,3 @@
-[Uploading CHANGELOG.md…]()
 # Changelog
 
 All notable changes to **Taorluath** are documented here. This project is in
@@ -6,6 +5,24 @@ All notable changes to **Taorluath** are documented here. This project is in
 **MAJOR** = full revamp, **MINOR** = new features, **PATCH** = fixes & tweaks.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
+
+## [0.2.8] — 2026-09-17 — Pre-Alpha
+
+### Changed
+- **Saved files are named by their initials.** A score now saves as the first
+  letter of each word in its title — "The Atholl Highlanders" becomes
+  `t_a_h.pipe` — instead of the full title. If two tunes share the same
+  initials, the second gets `_2`, `_3`… so a save never overwrites another tune.
+  Existing scores keep their old filenames until you next use Save Changes.
+- **The tune explorer shows tune titles, not filenames.** Each score in *My
+  Scores* now reads its real tune title(s); a file with more than one tune shows
+  them joined with a slash, e.g. *The Atholl Highlanders/The Steam Boat*.
+
+### Added
+- **Rename a score in the explorer.** Right-click any score in *My Scores* for
+  **Open / Rename… / Duplicate / Delete** (or press **F2** to rename). Renaming
+  sets a custom explorer label only — it never changes the tune titles or the
+  file on disk, and clearing it reverts to the automatic title list.
 
 ## [0.2.7] — 2026-09-10 — Pre-Alpha
 
