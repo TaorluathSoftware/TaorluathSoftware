@@ -23,6 +23,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
   **Open / Rename… / Duplicate / Delete** (or press **F2** to rename). Renaming
   sets a custom explorer label only — it never changes the tune titles or the
   file on disk, and clearing it reverts to the automatic title list.
+- **The playing beat is highlighted during playback.** As a tune plays, the note
+  currently sounding is marked with a soft, translucent orange box that runs the
+  full height of the stave and covers the whole beat — the note together with any
+  gracenotes. It steps through in time with the audio and clears on Stop. The
+  highlight is always orange, independent of the *Highlight colour* setting
+  (which still styles selection and the hover ghost).
 
 ## [0.2.7] — 2026-09-10 — Pre-Alpha
 
