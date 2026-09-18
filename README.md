@@ -1,10 +1,60 @@
 # Changelog
 
 All notable changes to **Taorluath** are documented here. This project is in
-**Pre-Alpha**. Versions follow `MAJOR.MINOR.PATCH` (see `src/version.txt`):
+**Alpha**. Versions follow `MAJOR.MINOR.PATCH` (see `src/version.txt`):
 **MAJOR** = full revamp, **MINOR** = new features, **PATCH** = fixes & tweaks.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
+
+## [0.3.0] — 2026-09-18 — Alpha
+
+*Taorluath enters Alpha* — a big release adding expression, a full practice
+toolkit, exports, a source editor, and any-system-font support.
+
+### Added
+- **Expression marks.** Fermata, accent and staccato can be added to any note
+  (Notes tab). They print above the note and shape playback — a fermata holds,
+  staccato clips the note short, an accent gives it a louder attack.
+- **Printed tempo marking.** An optional "♩ = <bpm>" metronome marking at the top
+  of the score (Settings tab → *Tempo Mark*).
+- **Audible metronome.** A click on every beat (Playback tab), with an adjustable
+  metronome volume and an optional one-bar **count-in** before playback.
+- **Practice toolkit (Playback tab).** A live **tempo slider**, **practice
+  speed** (½× / ¾× / 1×), **loop**, **Follow** (auto-scrolls to the playing
+  note), a **Tuning A** tone, a **drone on/off** toggle and a **drone volume**
+  slider.
+- **Bar numbers** and **note-name letters** — optional learning/navigation aids
+  (Settings tab).
+- **Redo** (`Ctrl+Y` / `Ctrl+Shift+Z`) with a new **Edit** menu; **Esc** stops
+  playback or clears the selection; **Spacebar** toggles play/stop.
+- **Editing helpers.** Duplicate a note (`Ctrl+D`), nudge its pitch with the
+  **↑/↓** arrows, **Clear Bar** and **Duplicate Bar** (Bar tab), and a **100%**
+  actual-size zoom button.
+- **Export to PNG** and **Export to MIDI** (File menu).
+- **Score Source Editor** (File menu) — view and edit the raw `.pipe` contents
+  and Apply to rebuild the tune.
+- **Open Recent** files (File menu).
+- **Any installed font.** Both the app font and the score/header fonts can now be
+  set to any font on your system, chosen through a searchable picker.
+
+### Changed
+- **New readable `.pipe` file format.** Saved tunes are now a clean,
+  human-readable text format (BWW-inspired) instead of JSON — see
+  [`syntax.md`](syntax.md). It covers headers and per-element font styles,
+  notes (pitch + duration, dots, ties, accents/staccato/fermata), gracenotes and
+  embellishments (`g:gdc` = D Throw), bar lines and repeats, 1st/2nd-time
+  brackets (`1[ … ]` / `2[ … ]`), one stave per line, text boxes, document
+  fonts/gaps, and drum mode. **Older JSON `.pipe` files still open automatically**
+  (the format is auto-detected on load). The built-in **Live `.pipe` Editor**
+  (Ctrl + Shift + Tab) edits this text and updates the score as you type.
+- **Maximum tempo raised** from 120 to 240 BPM.
+
+### Removed
+- **Harmony staves** have been removed from the app.
+
+### Fixed
+- **Second-timing number placement.** The 1st/2nd-time number now sits under the
+  bracket line (inside the bracket), matching standard notation.
 
 ## [0.2.8] — 2026-09-17 — Pre-Alpha
 
