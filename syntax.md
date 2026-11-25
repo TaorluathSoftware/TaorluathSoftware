@@ -76,6 +76,15 @@ These apply to the whole file and are written once, in the first tune's header:
 | `tune.timing.style` | 1st/2nd-time number font style             | `tune.timing.style: "Arial",5`|
 | `tune.text`         | A free text box (repeatable, see §7)       | `tune.text: "D.C.", 900, 400, 8, "Arial", b` |
 
+> **Per-tune vs app-wide.** The keys above are saved *inside the tune file*
+> because they belong to the score (its fonts, gaps, tie height, tempo marking).
+> The **Customise** tab's appearance and rendering choices — theme, accent
+> colour, Compact UI, which tabs/buttons are shown, the beam **tail length /
+> join depth / join gap**, and the **stave line thickness** — are **app-wide**
+> and live in `%APPDATA%\Taorluath\settings.py`, *not* in the `.pipe` file. The
+> same tune therefore renders with whatever Customise settings the current
+> machine has.
+
 ---
 
 ## 3. Notes
@@ -117,11 +126,20 @@ Separate every note with a space: `gq aq bq cq`
 | Modifier | Meaning   | Example |
 |----------|-----------|---------|
 | `-`      | Dotted    | `eQ-`   |
-| `>`      | Accent    | `eQ>`   |
-| `.`      | Staccato  | `eQ.`   |
-| `~`      | Fermata   | `eQ~`   |
+| `~`      | Fermata (held note) | `eQ~` |
 
-Combine freely: `eQ->` is a dotted, accented E quarter.
+Combine freely: `eQ-~` is a dotted E quarter held under a fermata. (Accent and
+staccato aren't supported — neither can be played on Highland pipes.)
+
+### Triplets
+
+Wrap the notes of a triplet in `3( … )` — up to **three** notes played in the
+time of two. The bracket (a tie arc with a **3** above it) is drawn above the
+stave over the group:
+
+```
+3(gq aq bq)
+```
 
 ### Rests
 
@@ -129,10 +147,10 @@ Combine freely: `eQ->` is a dotted, accented E quarter.
 
 ### Ties
 
-Put `^` between two notes of the **same pitch** to tie them:
+Attach `^` between two notes of the **same pitch** to tie them — **no spaces**:
 
 ```
-eQ ^ eQ
+eQ^eQ
 ```
 
 ---
@@ -150,14 +168,34 @@ note.
 
 ## 5. Bar lines
 
-| Symbol | Meaning              |
-|--------|----------------------|
-| `\|`   | Normal bar line      |
-| `\|\|` | Part end             |
-| `\|:`  | Repeat start         |
-| `:\|`  | Repeat end           |
+| Symbol | Meaning                    |
+|--------|----------------------------|
+| `\|`   | Normal bar line            |
+| `\|-`  | Part **start** (double bar) |
+| `-\|`  | Part **end** (double bar)   |
+| `\|:`  | Repeat start               |
+| `:\|`  | Repeat end                 |
 
-Write them with spaces around them: `gq aq | bq cq`
+Write them with spaces around them: `gq aq | bq cq -| dq eq`
+
+> The double barline is written as **`|-`** (start of a part) and **`-|`** (end of
+> a part) — two distinct tokens so they never get confused with the repeat marks
+> `|:` / `:|`. Older files that used `||` for a part end still load correctly.
+
+### Bar-line positions (pixel widths)
+
+Each bar line is written with its **position in pixels from the previous bar
+line** as a prefix — the first bar line is always `0`:
+
+```
+0| gq aq bq cq 368| dq eq fq Gq 400:|
+```
+
+Here `0|` is the opening, `368|` is a normal bar line 368 px after it (so bar 1
+is 368 px wide), and `400:|` is a repeat end 400 px further on. The app fills
+these in automatically (auto-fit sizes each bar to its contents, and dragging a
+bar line updates its number); once a stave has explicit widths they're kept
+(auto-fit leaves it alone) until you add or remove a bar.
 
 ---
 
@@ -166,11 +204,49 @@ Write them with spaces around them: `gq aq | bq cq`
 - **A stave is one line.** Everything on a single line is one stave; start a new
   line to start a new stave. Put as many bars on a line as you like.
 - **1st / 2nd timings:** wrap the notes/bars in `1[ … ]` (first time) or
-  `2[ … ]` (second time). Bar lines are allowed inside.
+  `2[ … ]` (second time). Bar lines are allowed inside, and a timing may begin
+  or end **in the middle of a bar** — the bracket is drawn over exactly the run
+  of notes you wrap.
 
 ```
 |: aq bq | 1[ cq dq :| ] 2[ eq fq ||
+aq bq 1[ cq dq ] 2[ eq ] fq
 ```
+
+### Harmony staves
+
+Prefix a stave line with `H<n>:` to make it **Harmony n** — drawn in a titled
+"Harmony n:" box below the tune, and played **in sync with the tune at the same
+volume**. Add as many as you like (each number is its own box):
+
+```
+gq aq bq cq | dq eq fq Gq
+H1: Gq Gq Gq Gq | aq aq aq aq
+H2: eq eq eq eq | fq fq fq fq
+```
+
+### Pages
+
+The score flows onto new pages automatically when a stave would run off the
+bottom, and pages are numbered. To force a **manual page break** (start a new
+page at a stave), put `page.break` on its own line before that stave:
+
+```
+gq aq bq cq | dq eq fq Gq
+page.break
+Gq fq eq dq | cq bq aq gq
+```
+
+To **pin a stave to a specific page**, put `p<N>` at the **end** of the stave
+line (`p1`, `p2`, `p3`, …):
+
+```
+0| gq aq bq cq 368| dq eq fq Gq p1
+0| Gq fq eq dq 368| cq bq aq gq p2
+```
+
+The second stave is placed on page 2. A stave with no `pN` flows onto a page
+normally (after the previous stave, or the next page if it would overflow).
 
 ---
 
@@ -231,7 +307,17 @@ tune.time_sig: 4_4
 
 ---
 
-## 10. Notes on compatibility
+## 10. Comments
+
+Anything after `--com:` on a line is a comment and is ignored when the file is
+read (it can be a whole line or trail after music):
+
+```
+--com: this whole line is a note to yourself
+|: gq aq bq cq :|   --com: the opening phrase
+```
+
+## 11. Notes on compatibility
 
 - **Loading:** the app reads both this text format and the older JSON `.pipe`
   files automatically.
